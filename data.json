@@ -1,1 +1,12 @@
-{"avatar_url":"https://teste.com","name":"Henrique Buzin","birth":"1997-10-23","gender":"M","services":"oi, brasil"}
+{
+    "instructors": [
+        {
+            "avatar_url": "https://teste.com",
+            "name": "Henrique Buzin",
+            "birth": 877564800000,
+            "gender": "M",
+            "services": "cross fit, musculação",
+            "created_at": 1586560126127
+        }
+    ]
+}
