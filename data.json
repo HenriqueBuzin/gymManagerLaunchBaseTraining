@@ -1,12 +1,13 @@
 {
     "instructors": [
         {
-            "avatar_url": "https://teste.com",
+            "id": 1,
+            "avatar_url": "https://pbs.twimg.com/profile_images/1201207928230961153/VQDFJuFQ_400x400.jpg",
             "name": "Henrique Buzin",
             "birth": 877564800000,
             "gender": "M",
-            "services": "cross fit, musculação",
-            "created_at": 1586560126127
+            "services": "Musculação, Cross Fit",
+            "created_at": 1586569311573
         }
     ]
 }
