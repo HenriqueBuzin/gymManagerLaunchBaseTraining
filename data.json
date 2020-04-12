@@ -1,5 +1,17 @@
 {
-    "members": [],
+    "members": [
+        {
+            "id": 2,
+            "avatar_url": "http://teste.comsad",
+            "name": "sdskmkjn",
+            "email": "dfjdsfjb@uhukdhs.com",
+            "birth": 291652974000000,
+            "gender": "M",
+            "blood": "A+",
+            "weight": "32",
+            "height": "2332"
+        }
+    ],
     "instructors": [
         {
             "id": "1",
@@ -12,12 +24,12 @@
         },
         {
             "id": 2,
-            "avatar_url": "http://teste.com",
-            "name": "ijij",
-            "birth": 8639994222000000,
+            "avatar_url": "https://teste.com",
+            "name": "ds",
+            "birth": 8639985409200000,
             "gender": "M",
-            "services": "sddsfds",
-            "created_at": 1586645313506
+            "services": "dsfds",
+            "created_at": 1586707718329
         }
     ]
 }

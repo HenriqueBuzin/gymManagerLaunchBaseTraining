@@ -1,57 +1,13 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-<form class="card" method="POST" action="/instructors">
+<form class="card" method="POST" action="/members">
 <section 
         class="avatar" 
         style="background: url(https://source.unsplash.com/collection/3465564/500x500) no-repeat center center / cover"></section>
     <section class="details">
-        <h3>Novo Instrutor</h3>
-
-        <div class="item">
-            <div>Avatar URL</div>
-            <div>
-                <input type="url" name="avatar_url" placeholder="http://" />
-            </div>
-        </div>
-
-        <div class="item">
-            <div>Instrutor</div>
-            <div>
-                <input type="text" name="name" placeholder="Nome do Instrutor" />
-            </div>
-        </div>
-
-        <div class="item">
-            <div>Data de Nascimento</div>
-            <div>
-                <input type="date" name="birth" />
-            </div>
-        </div>
-
-        <div class="item">
-            <div>Sexo</div>
-            <div>
-                <span>
-                    <input type="radio" name="gender" value="M" id="male" checked>
-                    <label for="male">Masculino</label>
-                </span>
-                <span>
-                    <input type="radio" name="gender" value="F" id="female">
-                    <label for="female">Feminino</label>
-                </span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div>Área de Atuação</div>
-            <div>
-                <input type="text" name="services" placeholder="Separe os serviços prestados por vírgula">
-            </div>
-        </div>
-
-        <button type="submit">Salvar</button>
-
+        <h3>Novo Membro</h3>
+        {% include 'members/fields.njk' %}
     </section>
 </form>
 {% endblock content %}

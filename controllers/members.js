@@ -2,14 +2,49 @@ const fs = require('fs')
 const data = require("../data.json")
 const { age, date } = require('../utils')
 
+// Index
+exports.index = function(req, res) {
+    return res.render("members/index", { members: data.members })
+}
+
 // Create
 exports.create = function(req, res) {
     return res.render("members/create")
 }
 
-// Index
-exports.index = function(req, res) {
-    return res.render("members/index", { members: data.members })
+// POST
+exports.post = function(req, res) {
+    
+    const keys = Object.keys(req.body)
+
+    for(key of keys){
+        if(req.body[key] == ""){
+            return res.send("Please, fill all fields!")
+        }
+    }
+
+    birth = Date.parse(req.body.birth)
+
+    let id = 1
+    const lastMember = data.members[data.members.length - 1]
+    
+    if(lastMember) {
+        id = lastMember.id + 1
+    }
+
+    data.members.push ({ 
+        id,
+        ...req.body,
+        birth
+    })
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 4), function(err){
+        if(err) res.send("Write file error!")
+    
+        return res.redirect("/members")
+    })
+
+    // return res.send(req.body)
 }
 
 // Show
@@ -29,42 +64,6 @@ exports.show = function(req, res) {
 
     return res.render("members/show", { member })
 }
-// Create
-exports.post = function(req, res) {
-    
-    const keys = Object.keys(req.body)
-
-    for(key of keys){
-        if(req.body[key] == ""){
-            return res.send("Please, fill all fields!")
-        }
-    }
-
-    let { avatar_url, birth, name, services, gender } = req.body
-
-    birth = Date.parse(birth)
-    const created_at = Date.now()
-    const id = Number(data.members.length + 1)
-
-    
-    data.members.push({
-        id,
-        avatar_url,
-        name,
-        birth,
-        gender,
-        services,
-        created_at
-    })
-
-    fs.writeFile("data.json", JSON.stringify(data, null, 4), function(err){
-        if(err) res.send("Write file error!")
-    
-        return res.redirect("/members")
-    })
-
-    // return res.send(req.body)
-}
 
 // Edit
 exports.edit = function(req, res){
@@ -79,7 +78,7 @@ exports.edit = function(req, res){
 
     const member = {
         ...foundMember,
-        birth: date(foundMember.birth)
+        birth: date(foundMember.birth).iso
     }
 
     return res.render('members/edit', { member })
