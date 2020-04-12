@@ -1,15 +1,16 @@
 const { age, date } = require('../../lib/utils')
 const db = require("../../config/db")
 
-
 module.exports = {
     index(req, res){
-        return res.send("oi")
+        return res.render("instructors/index")
     },
     create(req, res){
-        return res.send("instructors/create")
+        return res.render("instructors/create")
     },
     post(req, res){
+      
+
         const keys = Object.keys(req.body)
 
         for(key of keys){
@@ -40,32 +41,27 @@ module.exports = {
 
         db.query(query, values, function(err, results){
             console.log(err)
-            console.log(results)
-            return
+
+            if(err) return res.send("Database Error!")
+
+            return res.redirect(`/instructors/${results.rows[0].id}`)
 
 
         })
 
-
-
-
-
-
-
-
-
-
-
-
-        
     },
     show(req, res){
-        return    
+        return res.send("oi")
+    
+    },
+    edit(req, res){
+        return res.send("oi")
+
     },
     put(req, res){
-        return
+        return res.send("oi")
     },
     delete(req, res){
-        return
+        return res.send("oi")
     }
 }
