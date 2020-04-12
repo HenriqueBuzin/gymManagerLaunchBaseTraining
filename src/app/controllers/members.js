@@ -1,23 +1,69 @@
+const { age, date } = require('../../lib/utils')
+const Member = require('../models/Member')
+
 module.exports = {
     index(req, res){
-        return res.send("oi")
+        Member.all(function(members){
+            return res.render("members/index", { members })
+        })
     },
     create(req, res){
-        return res.send("oi")
+        return res.render("members/create")
     },
     post(req, res){
-        return res.send("oi")
+        const keys = Object.keys(req.body)
+
+        for(key of keys){
+            if(req.body[key] == ""){
+                return res.send("Please, fill all fields!")
+            }
+        }
+    
+        Member.create(req.body, function(){
+            return res.redirect(`/members/${member.id}`)
+        })
     },
     show(req, res){
-        return res.send("oi")
+        Member.find(req.params.id, function(member){
+            
+            if(!member) return res.send("Member not found!")
+            
+            member.birth = date(member.birth).birthDay
+            member.services = member.services.split(",")
+
+            member.created_at = date(member.created_at).br
+
+            return res.render("members/show", { member })
+        
+        })
     },
     edit(req, res){
-        return res.send("oi")
+        Member.find(req.params.id, function(member){
+            
+            if(!member) return res.send("Member not found!")
+            
+            member.birth = date(member.birth).iso
+            
+            return res.render("members/edit", { member })
+        
+        })
     },
     put(req, res){
-        return res.send("oi")
+        const keys = Object.keys(req.body)
+
+        for(key of keys){
+            if(req.body[key] == ""){
+                return res.send("Please, fill all fields!")
+            }
+        }
+
+        Member.update(req.body, function(){
+            return res.redirect(`members/${req.body.id}`)
+        })
     },
     delete(req, res){
-        return res.send("oi")
+        Member.delete(req.body.id, function(){
+            return res.redirect("members")
+        })
     }
 }
