@@ -74,34 +74,34 @@
     <div>
         <select name="blood">
             <optgroup label="Tipo A">
-                <option value="A+" {% if member.blood == "A1" %} selected {% endif %}>
+                <option value="A+" {% if member.blood == "A+" %} selected {% endif %}>
                     A+
                 </option>
-                <option value="A-" {% if member.blood == "A0" %} selected {% endif %}>
+                <option value="A-" {% if member.blood == "A-" %} selected {% endif %}>
                     A-
                 </option>
             </optgroup>
             <optgroup label="Tipo B">
-                <option value="B+" {% if member.blood == "B1" %} selected {% endif %}>
+                <option value="B+" {% if member.blood == "B+" %} selected {% endif %}>
                     B+
                 </option>
-                <option value="B-" {% if member.blood == "B0" %} selected {% endif %}>
+                <option value="B-" {% if member.blood == "B-" %} selected {% endif %}>
                     B-
                 </option>
             </optgroup>
             <optgroup label="Tipo AB">
-                <option value="AB+" {% if member.blood == "AB1" %} selected {% endif %}>
+                <option value="AB+" {% if member.blood == "AB+" %} selected {% endif %}>
                     AB+
                 </option>
-                <option value="AB-" {% if member.blood == "AB0" %} selected {% endif %}>
+                <option value="AB-" {% if member.blood == "AB-" %} selected {% endif %}>
                     AB-
                 </option>
             </optgroup>
             <optgroup label="Tipo O">
-                <option value="O+" {% if member.blood == "O1" %} selected {% endif %}>
+                <option value="O+" {% if member.blood == "O+" %} selected {% endif %}>
                     O+
                 </option>
-                <option value="O-" {% if member.blood == "O0" %} selected {% endif %}>
+                <option value="O-" {% if member.blood == "O-" %} selected {% endif %}>
                     O-
                 </option>
             </optgroup>
@@ -128,5 +128,19 @@
             value="{{ member.height }}"/>
     </div>
 </div>
+
+<div class="item">
+    <div>Instrutor</div>
+    <div>
+        <select name="instructor">
+            {% for instructor in instructorOptions %}
+            <option value="{{ instructor.id }}}" {% if member.instructor_id == instructor.id %} selected {% endif %}>
+                {{ instructor.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
 
 <button type="submit">Salvar</button>
