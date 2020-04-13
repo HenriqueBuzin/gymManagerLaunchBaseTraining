@@ -19,7 +19,7 @@ module.exports = {
             }
         }
     
-        Instructor.create(req.body, function(){
+        Instructor.create(req.body, function(instructor){
             return res.redirect(`/instructors/${instructor.id}`)
         })
     },

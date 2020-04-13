@@ -19,7 +19,7 @@ module.exports = {
             }
         }
     
-        Member.create(req.body, function(){
+        Member.create(req.body, function(member){
             return res.redirect(`/members/${member.id}`)
         })
     },
@@ -29,10 +29,7 @@ module.exports = {
             if(!member) return res.send("Member not found!")
             
             member.birth = date(member.birth).birthDay
-            member.services = member.services.split(",")
-
-            member.created_at = date(member.created_at).br
-
+            
             return res.render("members/show", { member })
         
         })

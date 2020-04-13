@@ -20,7 +20,7 @@ module.exports = {
                 blood,
                 weight,
                 height
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7, S8)
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
             RETURNING id
         `
         const values = [
@@ -58,7 +58,7 @@ module.exports = {
                 gender=($4),
                 email=($5),
                 blood=($6),
-                weight=($7)
+                weight=($7),
                 height=($8)
             WHERE id = $9
         `
